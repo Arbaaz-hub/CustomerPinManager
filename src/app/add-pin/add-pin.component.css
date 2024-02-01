@@ -1,0 +1,18 @@
+.mr-top {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Inside your styles.css or styles.scss */
+.custom-modal {
+    max-width: 80%;
+    /* Adjust the width as needed */
+}
+
+.align-radio {
+    display: flex;
+}
+
+.mr-right {
+    margin-right: 25px;
+}
