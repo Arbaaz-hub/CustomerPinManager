@@ -8,6 +8,7 @@ import { AddPinComponent } from './add-pin/add-pin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FileUploadModule } from 'ng2-file-upload';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     NgbModule,
     NgxSelectModule,
     FileUploadModule
