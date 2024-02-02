@@ -4,3 +4,8 @@
     color: red;
     font-size: 14px;
 }
+
+.align-btn{
+    text-align: center;
+    margin-bottom: 22px;
+}

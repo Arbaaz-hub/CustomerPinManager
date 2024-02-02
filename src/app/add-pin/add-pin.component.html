@@ -4,7 +4,7 @@
 
         <div class="form-group" class="mr-top">
             <label for="title">Title</label>
-            <input type="text" formControlName="title" required="true" class="form-control" id="title"
+            <input type="text" formControlName="title" class="form-control" id="title"
                 placeholder="Enter title">
             <span class="validation"
                 *ngIf="pinForm?.get('title')!.hasError('required') && (pinForm?.get('title')!.touched || pinForm?.get('title')!.dirty)">Title
@@ -13,18 +13,27 @@
 
         <div class="form-group mr-top">
             <label class="mr-right" for="email">Image</label>
-            <input type="file" formControlName="image" ng2FileSelect [uploader]="fileUploadService.uploader" />
+            <div>
+                <button type="button" (click)="filePicker.click()" class="btn btn-dark">Pick Image</button>
+                <input type="file" #filePicker formControlName="image" #fileInput (change)="handleFileInput($event)" ng2FileSelect />
+            </div>
+
+            <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && pinForm.get('image')!.valid">
+                <img [src]="imagePreview">
+            </div>
+           
             <span class="validation"
-                *ngIf="pinForm?.get('image')!.hasError('required') && (pinForm?.get('image')!.touched || pinForm?.get('image')!.dirty)">Title
+                *ngIf="pinForm?.get('image')!.hasError('required') && (pinForm?.get('image')!.touched || pinForm?.get('image')!.dirty)">Image
                 is required!</span>
         </div>
 
 
         <div class="form-group mr-top">
             <label for="region">Collaborators</label>
-            <ngx-select formControlName="collaborators"></ngx-select>
+            <ngx-select formControlName="collaborators" placeholder="Select a collaborators" [items]="allCollaborators"
+                [optionValueField]="'title'" [optionTextField]="'title'" [multiple]="true"></ngx-select>
             <span class="validation"
-                *ngIf="pinForm?.get('collaborators')!.hasError('required') && (pinForm?.get('collaborators')!.touched || pinForm?.get('collaborators')!.dirty)">Title
+                *ngIf="pinForm?.get('collaborators')!.hasError('required') && (pinForm?.get('collaborators')!.touched || pinForm?.get('collaborators')!.dirty)">Collaborators
                 is required!</span>
         </div>
 
@@ -32,15 +41,15 @@
             <label for="country">privacy</label>
             <div class="align-radio">
                 <div class="form-check mr-right">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" value="private"
+                    <input class="form-check-input" type="radio" name="privacy" value="private"
                         formControlName="privacy" id="flexRadioDefault1" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Private
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" value="public"
-                        formControlName="privacy" id="flexRadioDefault2">
+                    <input class="form-check-input"  type="radio" name="privacy" value="public" formControlName="privacy"
+                        id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
                         Public
                     </label>
@@ -51,6 +60,9 @@
                 is required!</span>
         </div>
 
-        <button type="submit" class="btn btn-primary mr-top">Add Pin</button>
+        <div class="align-btn">
+            <button type="submit" class="btn btn-primary mr-top">Add Pin</button>
+        </div>
+       
     </form>
 </div>

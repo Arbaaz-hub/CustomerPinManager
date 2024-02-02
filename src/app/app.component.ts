@@ -1,36 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { AddPinComponent } from './add-pin/add-pin.component';
+import { ApiService } from './services/api.service';
+import { Pin } from './modal/pin.modal';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  pinList: Pin[] = [];
 
-  constructor(private modalService: NgbModal){}
+  constructor(private modalService: NgbModal, private _apiService: ApiService){}
 
-  openCustomerModal() {
-    const modalRef = this.modalService.open(AddCustomerComponent, { centered: true });
-
-    // Subscribe to the modal's result to handle any actions after the modal is closed
-    modalRef.result.then((result) => {
-      console.log('Modal closed with result:', result);
-    }, (reason) => {
-      console.log('Modal dismissed with reason:', reason);
-    });
+  ngOnInit(): void {
+    this.pinList = this._apiService.getPinData();
   }
 
-  openPinModal() {
-    const modalRef = this.modalService.open(AddPinComponent, { centered: true });
+  // This method is used to open customer modal.
+  openCustomerModal() {
+    this.modalService.open(AddCustomerComponent, { centered: true });
+  }
 
-    // Subscribe to the modal's result to handle any actions after the modal is closed
+  // This method is used to open Pin modal.
+  openPinModal() {
+    let modalRef =  this.modalService.open(AddPinComponent, { centered: true });
+
     modalRef.result.then((result) => {
-      console.log('Modal closed with result:', result);
-    }, (reason) => {
-      console.log('Modal dismissed with reason:', reason);
+      this.pinList = this._apiService.getPinData();
     });
   }
 }

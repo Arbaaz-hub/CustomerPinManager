@@ -9,6 +9,10 @@
     /* Adjust the width as needed */
 }
 
+input[type="file"] {
+    visibility: hidden;
+  }
+
 .align-radio {
     display: flex;
 }
@@ -16,3 +20,12 @@
 .mr-right {
     margin-right: 25px;
 }
+
+.image-preview {
+    height: 5rem;
+    margin: 1rem 0;
+  }
+  
+  .image-preview img {
+    height: 100%;
+  }

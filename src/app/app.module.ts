@@ -9,6 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+    }),
     NgxSelectModule,
     FileUploadModule
   ],

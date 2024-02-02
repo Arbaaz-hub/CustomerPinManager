@@ -1,18 +1,19 @@
 <div class="container">
-  <div class="alg-right" style="margin-top: 80px;margin-bottom: 5px;">
-    <button (click)="openCustomerModal()" type="button" class="btn btn-primary">
+  <div class="alg-right set-mar" style="">
+    <button (click)="openCustomerModal()" type="button" class="btn btn-primary custom-btn">
       <span class="material-symbols-outlined icon">
         add
       </span>
       Add Customer</button>
   </div>
 
-  <div class="alg-right"><button (click)="openPinModal()" type="button" class="btn btn-primary"> <span
+  <div class="alg-right"><button (click)="openPinModal()" type="button" class="btn btn-primary custom-btn"> <span
         class="material-symbols-outlined icon">
         add
       </span>Add Pin</button></div>
 
   <h5>List of pins</h5>
+  
   <table class="table table-hover">
     <thead>
       <tr>
@@ -22,13 +23,18 @@
         <th scope="col">Privacy</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td scope="row">pin1</td>
-        <td>image 1</td>
-        <td>customer1</td>
-        <td>public</td>
+    
+    <tbody *ngIf="pinList?.length !== 0">
+      <tr *ngFor="let pin of pinList">
+        <td scope="row">{{pin?.title}}</td>
+        <td>
+          <div class="image-preview">
+            <img [src]="pin?.image"  alt="Uploaded Image" >
+          </div></td>
+        <td><ng-container *ngFor="let col of pin?.collaborators"><div>{{col}}</div></ng-container></td>
+        <td>{{pin?.privacy}}</td>
       </tr>
     </tbody>
   </table>
+  <div *ngIf="pinList?.length == 0" class="text-center  mt-3"> No Data Found!</div>
 </div>

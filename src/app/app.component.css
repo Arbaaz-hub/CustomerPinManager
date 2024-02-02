@@ -8,3 +8,26 @@
     top: 3px;
 }
 
+.image-preview {
+  max-width: 300px;
+  }
+  
+  .image-preview img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .set-mar{
+    margin-top: 80px;
+    margin-bottom: 5px;
+  }
+
+  .custom-btn {
+    width: 150px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  td{
+    line-height: 150px;
+  }
