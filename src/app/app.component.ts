@@ -28,8 +28,8 @@ export class AppComponent implements OnInit{
   openPinModal() {
     let modalRef =  this.modalService.open(AddPinComponent, { centered: true });
 
-    modalRef.result.then((result) => {
+    modalRef.closed.subscribe(() => {
       this.pinList = this._apiService.getPinData();
-    });
+    })
   }
 }

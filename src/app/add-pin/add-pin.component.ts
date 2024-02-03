@@ -52,7 +52,7 @@ export class AddPinComponent implements OnInit {
     reader.readAsDataURL(this.file);
   }
 
-  // This method is used to add pin the pin data.
+  // This method is used to add pin data.
   addPin(): void {
     this.pinForm.markAllAsTouched();
 

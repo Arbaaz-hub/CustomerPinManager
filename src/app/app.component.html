@@ -31,7 +31,9 @@
           <div class="image-preview">
             <img [src]="pin?.image"  alt="Uploaded Image" >
           </div></td>
-        <td><ng-container *ngFor="let col of pin?.collaborators"><div>{{col}}</div></ng-container></td>
+        <td>
+          <div *ngFor="let col of pin?.collaborators">{{col}}</div>
+        </td>
         <td>{{pin?.privacy}}</td>
       </tr>
     </tbody>

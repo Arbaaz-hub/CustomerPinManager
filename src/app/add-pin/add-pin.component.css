@@ -3,10 +3,8 @@
     margin-bottom: 10px;
 }
 
-/* Inside your styles.css or styles.scss */
 .custom-modal {
     max-width: 80%;
-    /* Adjust the width as needed */
 }
 
 input[type="file"] {

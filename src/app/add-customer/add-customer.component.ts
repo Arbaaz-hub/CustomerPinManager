@@ -14,8 +14,8 @@ import { CountryService } from '../services/country.service';
 export class AddCustomerComponent implements OnInit {
   customerForm!: FormGroup;
   allCustomer: Customer[] = [];
-  allRegions: any[] = [];
-  filteredCountry: any[] = [];
+  allRegions: string[] = [];
+  filteredCountry: string[] = [];
 
   constructor(public activeModal: NgbActiveModal, private _apiService: ApiService,
     private _countryService: CountryService, private toastr: ToastrService) { }
@@ -31,7 +31,8 @@ export class AddCustomerComponent implements OnInit {
       country: new FormControl('', Validators.required),
     });
 
-    this.getAllContries();
+    // I am not calling this method because API through CORS oring error.
+    // this.getAllContries();
 
     this.allCustomer = this._apiService.getCustomerData();
     this.allRegions = Array.from(new Set(Object.values(this._countryService.countryList).map(item => item.region)));
@@ -67,5 +68,4 @@ export class AddCustomerComponent implements OnInit {
     this.toastr.success('Customer Added Successfully!');
     this.activeModal.close();
   }
-
 }

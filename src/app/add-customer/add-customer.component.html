@@ -24,7 +24,7 @@
         *ngIf="customerForm?.get('email')!?.hasError('pattern')">Please enter valid email!</span>
     </div>
 
-    <!-- Region Input (using ngx-select-ex) -->
+    <!-- Region Input (using ngx-select) -->
     <div class="form-group mr-top">
       <label for="region">Region</label>
       <ngx-select formControlName="region" placeholder="select a region" (select)="getSelectedRegion($event)" [items]="allRegions" [multiple]="false"></ngx-select>
@@ -33,7 +33,7 @@
         is required!</span>
     </div>
 
-    <!-- Country Input (using ngx-select-ex) -->
+    <!-- Country Input (using ngx-select) -->
     <div class="form-group mr-top">
       <label for="country">Country</label>
       <ngx-select formControlName="country" placeholder="select a country" [items]="filteredCountry" [multiple]="false"></ngx-select>
